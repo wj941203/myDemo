@@ -1,0 +1,172 @@
+
+
+<!-- <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edege,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="keywords" content="your keywords">
+  <meta name="description" content="your description">
+  <link rel="icon" href="./src//assets/logo.png"> -->
+  <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- <title>Document</title>
+</head>
+
+<body>
+  <style>
+    body {
+      padding: 2em;
+      text-align: center;
+    }
+
+    .block {
+      position: relative;
+      display: inline-block;
+      width: 10em;
+      height: 10em;
+      vertical-align: middle;
+    }
+
+    .block_content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 10em;
+      background: #333;
+      color: #FFF;
+    }
+
+    .block_hoverer {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .block_hoverer:nth-child(1) {
+      background: rgb(197, 236, 22);
+      top: -90%;
+    }
+
+    .block_hoverer:nth-child(2) {
+      background: lime;
+      top: 90%;
+    }
+
+    .block_hoverer:nth-child(3) {
+      background: orange;
+      left: -90%;
+    }
+
+    .block_hoverer:nth-child(4) {
+      background: blue;
+      left: 90%;
+    }
+
+    .block_hoverer {
+      transition: all 0.3s ease;
+    }
+
+    .block_hoverer:hover {
+      opacity: 1;
+      top: 0;
+      left: 0;
+      z-index: 99;
+    }
+
+    .block {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      width: 10em;
+      height: 10em;
+      vertical-align: middle;
+    }
+
+    .block_hoverer {
+      opacity: 0;
+    }
+
+    .block_hoverer:hover {
+      opacity: 1;
+    }
+
+  </style>
+  <p class="text foo" >从不同方向使鼠标指针移过下面的内容</p>
+  <div class="block">
+    <div class="block_hoverer">你个笨蛋</div>
+    <div class="block_hoverer">你个傻帽</div>
+    <div class="block_hoverer">你个坏女人</div>
+    <div class="block_hoverer">给我生猴子吗？</div>
+    <div class="block_content">
+        闺女
+    </div>
+</div>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #id{
+    width: 100px;
+    height:100px;
+    background-color: #ccc;
+  }
+</style>
+<body>
+  <div id="id"></div>
+  <!-- <input type="text" value="123456" placeholder="123456"> -->
+</body>
+<script>
+  var dragging = false
+  var position = null
+  var add = document.getElementById('id')
+  // console.log(add)
+
+add.addEventListener('mousedown',function(e){
+  dragging = true
+  position = [e.clientX, e.clientY]
+  console.log(position)
+  add.style.width='200px'
+})
+
+
+add.addEventListener('mousemove', function(e){
+  if(dragging === false) return null
+  const x = e.clientX
+  const y = e.clientY
+  // console.log(x,y)
+  const deltaX = x - position[0]
+  const deltaY = y - position[1]
+  const left = parseInt(add.style.left || 0)
+  const top = parseInt(add.style.top || 0)
+  add.style.left = left + deltaX + 'px'
+  add.style.top = top + deltaY + 'px'
+  position = [x, y]
+  // console.log('1111',position)
+})
+document.addEventListener('mouseup', function(e){
+  // console.log(333)
+  dragging = false
+})
+
+</script>
+</html>

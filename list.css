@@ -1,0 +1,17 @@
+.marquee div {
+  display: block;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  overflow: hidden;
+  -webkit-animation: marquee 5s linear infinite;
+  animation: marquee 2s linear infinite;
+}
+@keyframes marquee {
+  0% {
+      transform: translateY(-25);
+  }
+  100% {
+      transform: translateY(-700px);
+  }
+}
